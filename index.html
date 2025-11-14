@@ -1,1 +1,111 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kreida UA — крейда та глина</title>
+  <meta name="description" content="Крейда та глина для навчання і творчості. Нетоксично. Менше пилу." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#faf9f7">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="wrap row">
+      <a class="brand" href="index.html" aria-label="Kreida UA">Kreida UA</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Відкрити меню">
+        <span><i></i></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Slide Menu -->
+  <aside class="panel" id="panel" aria-hidden="true">
+    <div class="panel__head">
+      <div class="panel__title">Меню</div>
+      <button class="panel__close" id="closePanel" aria-label="Закрити">×</button>
+    </div>
+    <nav class="panel__nav" aria-label="Навігація">
+      <a href="shop.html">Магазин</a>
+      <a href="about.html">Про нас</a>
+      <a href="contact.html">Контакти</a>
+    </nav>
+  </aside>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap">
+        <figure class="card">
+          <img src="assets/hero.png" alt="Герой Kreida UA — крейда та глина" loading="eager" decoding="async">
+        </figure>
+      </div>
+    </section>
+
+    <!-- Sayings -->
+    <section class="section">
+      <div class="wrap">
+        <h1>Матеріали для навчання і творчості</h1>
+        <p>Крейда та глина, які подобаються дітям, вчителям і майстрам. Безпечні склади, чисті пігменти та акуратний дотик.</p>
+        <p>Для школи, дому, студій та вуличного мистецтва. Створюємо з турботою в Україні.</p>
+      </div>
+    </section>
+
+    <!-- Two pictures -->
+    <section class="section">
+      <div class="wrap grid-2">
+        <figure class="card">
+          <img src="assets/pic1.jpg" alt="Крейда для шкільних дощок" loading="lazy">
+        </figure>
+        <figure class="card">
+          <img src="assets/pic2.jpg" alt="Глина для ліплення" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- CTA to shop -->
+    <section class="section">
+      <div class="wrap" style="text-align:center;">
+        <a class="btn" href="shop.html">Перейти до магазину</a>
+      </div>
+    </section>
+
+    <!-- Testimonial videos -->
+    <section class="section">
+      <div class="wrap">
+        <h2>Відгуки</h2>
+        <div class="videos">
+          <video src="assets/vid1.mp4" autoplay muted loop playsinline controls></video>
+          <video src="assets/vid2.mp4" autoplay muted loop playsinline controls></video>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="wrap">
+      <a class="ig" href="https://www.instagram.com/kreidaua/" target="_blank" rel="noopener" aria-label="Instagram Kreida UA">
+        Instagram
+      </a>
+      <span class="small">© <span id="y"></span> Kreida UA</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const btn = document.getElementById('menuBtn');
+    const panel = document.getElementById('panel');
+    const closeBtn = document.getElementById('closePanel');
+    const toggle = () => {
+      const open = panel.classList.toggle('open');
+      panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+    };
+    btn.addEventListener('click', toggle);
+    closeBtn.addEventListener('click', toggle);
+  </script>
+</body>
+</html>
 
