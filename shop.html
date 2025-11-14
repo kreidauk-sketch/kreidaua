@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Магазин — Kreida UA</title>
+  <meta name="description" content="Магазин Kreida UA: крейда, глина, набори для творчості." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#faf9f7">
+</head>
+<body>
+  <header class="header">
+    <div class="wrap row">
+      <a class="brand" href="index.html">Kreida UA</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Відкрити меню"><span><i></i></span></button>
+    </div>
+  </header>
+
+  <aside class="panel" id="panel" aria-hidden="true">
+    <div class="panel__head">
+      <div class="panel__title">Меню</div>
+      <button class="panel__close" id="closePanel" aria-label="Закрити">×</button>
+    </div>
+    <nav class="panel__nav" aria-label="Навігація">
+      <a href="shop.html">Магазин</a>
+      <a href="about.html">Про нас</a>
+      <a href="contact.html">Контакти</a>
+    </nav>
+  </aside>
+
+  <main class="section">
+    <div class="wrap">
+      <h1>Магазин</h1>
+      <p>Обирайте матеріали — деталі з’являться на цій сторінці без переходів.</p>
+
+      <!-- Product thumbnails -->
+      <div class="shop-grid" id="shopGrid">
+        <article class="prod" data-key="chalk">
+          <img src="assets/pic3.jpg" alt="Крейда (різновиди)">
+          <div class="prod__body"><strong>Крейда</strong></div>
+        </article>
+        <article class="prod" data-key="clay">
+          <img src="assets/pic4.jpg" alt="Глина натуральна">
+          <div class="prod__body"><strong>Глина</strong></div>
+        </article>
+        <article class="prod" data-key="set">
+          <img src="assets/pic5.jpg" alt="Набір: крейда + глина">
+          <div class="prod__body"><strong>Набір</strong></div>
+        </article>
+      </div>
+
+      <!-- Inline viewer (shows on same page, not a popup) -->
+      <div class="viewer" id="viewer">
+        <div class="viewer__row">
+          <img id="vImg" src="" alt="">
+          <div>
+            <h3 id="vTitle">Товар</h3>
+            <p id="vText">Опис товару та варіанти пакування.</p>
+            <a class="btn" id="vWhatsApp" target="_blank" rel="noopener">Замовити у WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <a class="ig" href="https://www.instagram.com/kreidaua/" target="_blank" rel="noopener">Instagram</a>
+      <span class="small">© <span id="y"></span> Kreida UA</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const btn = document.getElementById('menuBtn');
+    const panel = document.getElementById('panel');
+    const closeBtn = document.getElementById('closePanel');
+    const toggle = () => {
+      const open = panel.classList.toggle('open');
+      panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+    };
+    btn.addEventListener('click', toggle);
+    closeBtn.addEventListener('click', toggle);
+
+    const viewer = document.getElementById('viewer');
+    const vImg = document.getElementById('vImg');
+    const vTitle = document.getElementById('vTitle');
+    const vText = document.getElementById('vText');
+    const vWhatsApp = document.getElementById('vWhatsApp');
+
+    const map = {
+      chalk: {
+        title: 'Крейда',
+        img: 'assets/pic3.jpg',
+        text: 'Біла та кольорова. Менше пилу, чисті пігменти. Упаковки: 12 / 50 / 100 шт.',
+      },
+      clay: {
+        title: 'Глина',
+        img: 'assets/pic4.jpg',
+        text: 'Натуральна, пластична. Пакування 1 кг або 500 г. Для ліплення та занять.',
+      },
+      set: {
+        title: 'Набір “Старт творчості”',
+        img: 'assets/pic5.jpg',
+        text: 'Крейда (12 кольорів) + глина 500 г. Ідеально для старту.',
+      }
+    };
+
+    document.querySelectorAll('.prod').forEach(card => {
+      card.addEventListener('click', () => {
+        const key = card.dataset.key;
+        const item = map[key];
+        vImg.src = item.img;
+        vImg.alt = item.title;
+        vTitle.textContent = item.title;
+        vText.textContent = item.text;
+        vWhatsApp.href = 'https://wa.me/962777547537?text=' + encodeURIComponent('Доброго дня! Хочу замовити: ' + item.title);
+        viewer.classList.add('show');
+        viewer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  </script>
+</body>
+</html>
