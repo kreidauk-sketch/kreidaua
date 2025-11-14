@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Контакти — Kreida UA</title>
+  <meta name="description" content="Зв’яжіться з Kreida UA: Email та WhatsApp." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#faf9f7">
+</head>
+<body>
+  <header class="header">
+    <div class="wrap row">
+      <a class="brand" href="index.html">Kreida UA</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Відкрити меню"><span><i></i></span></button>
+    </div>
+  </header>
+
+  <aside class="panel" id="panel" aria-hidden="true">
+    <div class="panel__head">
+      <div class="panel__title">Меню</div>
+      <button class="panel__close" id="closePanel" aria-label="Закрити">×</button>
+    </div>
+    <nav class="panel__nav" aria-label="Навігація">
+      <a href="shop.html">Магазин</a>
+      <a href="about.html">Про нас</a>
+      <a href="contact.html">Контакти</a>
+    </nav>
+  </aside>
+
+  <main class="section">
+    <div class="wrap">
+      <h1>Контакти</h1>
+      <!-- Mailto form -->
+      <form id="mailForm" class="card" style="padding:12px;">
+        <label>
+          Ім’я<br>
+          <input type="text" id="name" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;">
+        </label>
+        <br><br>
+        <label>
+          Email<br>
+          <input type="email" id="email" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;">
+        </label>
+        <br><br>
+        <label>
+          Повідомлення<br>
+          <textarea id="message" rows="4" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;"></textarea>
+        </label>
+        <br>
+        <button class="btn" type="submit">Надіслати Email</button>
+      </form>
+
+      <section class="section" style="text-align:center;">
+        <a class="btn" href="https://wa.me/962777547537?text=%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B3%D0%BE%20%D0%B4%D0%BD%D1%8F!%20Kreida%20UA" target="_blank" rel="noopener">WhatsApp</a>
+      </section>
+
+      <section class="section">
+        <video src="assets/vid4.mp4" autoplay muted loop playsinline controls></video>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <a class="ig" href="https://www.instagram.com/kreidaua/" target="_blank" rel="noopener">Instagram</a>
+      <span class="small">© <span id="y"></span> Kreida UA</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const btn = document.getElementById('menuBtn');
+    const panel = document.getElementById('panel');
+    const closeBtn = document.getElementById('closePanel');
+    const toggle = () => {
+      const open = panel.classList.toggle('open');
+      panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+    };
+    btn.addEventListener('click', toggle);
+    closeBtn.addEventListener('click', toggle);
+
+    // Mailto handler
+    document.getElementById('mailForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('message').value.trim();
+      const subject = encodeURIComponent('Повідомлення з сайту Kreida UA');
+      const body = encodeURIComponent(`Ім’я: ${name}\nEmail: ${email}\n\n${msg}`);
+      window.location.href = `mailto:kreida.uk@gmail.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
