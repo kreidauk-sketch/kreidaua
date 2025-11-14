@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Про нас — Kreida UA</title>
+  <meta name="description" content="Kreida UA — крейда та глина. Нетоксично. Менше пилу. Зроблено в Україні." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#faf9f7">
+</head>
+<body>
+  <header class="header">
+    <div class="wrap row">
+      <a class="brand" href="index.html">Kreida UA</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Відкрити меню"><span><i></i></span></button>
+    </div>
+  </header>
+
+  <aside class="panel" id="panel" aria-hidden="true">
+    <div class="panel__head">
+      <div class="panel__title">Меню</div>
+      <button class="panel__close" id="closePanel" aria-label="Закрити">×</button>
+    </div>
+    <nav class="panel__nav" aria-label="Навігація">
+      <a href="shop.html">Магазин</a>
+      <a href="about.html">Про нас</a>
+      <a href="contact.html">Контакти</a>
+    </nav>
+  </aside>
+
+  <main class="section">
+    <div class="wrap">
+      <!-- pic6 neatly fitted -->
+      <div class="fit-media card">
+        <img src="assets/pic6.jpg" alt="Виробництво Kreida UA — крейда та глина" loading="eager" decoding="async">
+      </div>
+
+      <section class="section">
+        <h1>Про нас</h1>
+        <p>“Не каміння, а крейда та глина” — наш підхід простий: безпечні склади, збалансована твердість і приємні на дотик матеріали. Ми робимо все, аби навчання і творчість були чистішими та ближчими.</p>
+      </section>
+
+      <!-- vid3 -->
+      <section class="section">
+        <h2>Відео</h2>
+        <video src="assets/vid3.mp4" autoplay muted loop playsinline controls></video>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <a class="ig" href="https://www.instagram.com/kreidaua/" target="_blank" rel="noopener">Instagram</a>
+      <span class="small">© <span id="y"></span> Kreida UA</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const btn = document.getElementById('menuBtn');
+    const panel = document.getElementById('panel');
+    const closeBtn = document.getElementById('closePanel');
+    const toggle = () => {
+      const open = panel.classList.toggle('open');
+      panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+    };
+    btn.addEventListener('click', toggle);
+    closeBtn.addEventListener('click', toggle);
+  </script>
+</body>
+</html>
